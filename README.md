@@ -1,1 +1,3 @@
-A Statistics Library for .NET Core.
+# Stats.Net
+## A Statistics Library for .NET Core.
+
