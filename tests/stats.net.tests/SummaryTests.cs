@@ -1,8 +1,7 @@
 using Xunit;
 using System;
-using System.Collections.Generic;
-using Stats.Net;
 using System.Linq;
+using Stats.Net.Tests.TestClasses;
 using static Stats.Net.Summary;
 
 namespace Stats.Net.Tests
@@ -150,6 +149,53 @@ namespace Stats.Net.Tests
             int[] data = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             var mode = Mode(data);
             Assert.Null(mode);
+        }
+
+        [Fact]
+        public void Range_GivenAnArrayOfInts_ReturnsUpperAndLowerBounds(){
+            int[] data = new int[] {9, 4, 3, 20, 1};
+            var range = Range(data);
+            Assert.Equal(2, range.Count());
+            Assert.Equal(1, range.First());
+            Assert.Equal(20, range.Last());
+        }
+
+        [Fact]
+        public void Range_GivenAnArrayOfStrings_ReturnsUpperAndLowerBounds(){
+            string[] data = new string[] {"absolute", "breakfast", "camp"};
+            var range = Range(data);
+            Assert.Equal(2, range.Count());
+            Assert.Equal("absolute", range.First());
+            Assert.Equal("camp", range.Last());
+        }
+
+        [Fact]
+        public void Range_GivenAnEmptyArray_ReturnsUpperAndLowerBounds(){
+            string[] data = new string[] {};
+            var range = Range(data);
+            Assert.Equal(2, range.Count());
+            Assert.Equal(null, range.First());
+            Assert.Equal(null, range.Last());
+        }
+
+        [Fact]
+        public void Range_GivenAnNull_ReturnsUpperAndLowerBounds(){
+            string[] data = null;
+            var range = Range(data);
+            Assert.Null(range);
+        }
+
+        [Fact]
+        public void Range_GivenAnArrayOfPerson_ReturnsUpperAndLowerBounds(){
+            Person[] data = new Person[] {
+                new Person(30, "Taylor"),
+                new Person(40, "Sara"),
+                new Person(20, "Taylor")
+            };
+            var range = Range(data);
+            Assert.Equal("Sara", range.First().Name);
+            Assert.Equal("Taylor", range.Last().Name);
+            Assert.Equal(30, range.Last().Age);
         }
     }
 

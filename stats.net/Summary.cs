@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -59,22 +60,17 @@ namespace Stats.Net
             return values;
         }
 
-        public static IEnumerable<int> Mode(IEnumerable<int> vector){
+        public static IEnumerable<T> Mode<T>(IEnumerable<T> vector) where T: IComparable<T>{
             var valueOccurences = CountOccurences(vector);
             var max = valueOccurences.Select(v => v.Value).Max();
             return max == 1 ? null : valueOccurences.Where(v => v.Value == max).Select(v => v.Key);
         }
 
-        public static IEnumerable<float> Mode(IEnumerable<float> vector){
-            var valueOccurences = CountOccurences(vector);
-            var max = valueOccurences.Select(v => v.Value).Max();
-            return max == 1 ? null : valueOccurences.Where(v => v.Value == max).Select(v => v.Key);
-        }
-
-        public static IEnumerable<double> Mode(IEnumerable<double> vector){
-            var valueOccurences = CountOccurences(vector);
-            var max = valueOccurences.Select(v => v.Value).Max();
-            return max == 1 ? null : valueOccurences.Where(v => v.Value == max).Select(v => v.Key);
+        public static IEnumerable<T> Range<T>(IEnumerable<T> vector) where T: IComparable<T>{
+            if(vector != null){
+                return new T[]{vector.Min(), vector.Max()};
+            }
+            return null;
         }
 
 
