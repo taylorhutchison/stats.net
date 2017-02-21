@@ -14,6 +14,8 @@ Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "DataIO.Tests", "tests\DataI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVProcessor", "docs\examples\CSVProcessor\CSVProcessor.csproj", "{B66E9704-AA15-41BA-8344-1D9FCD9D2577}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{5DF68778-7758-4A00-9AF4-3080323A78EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,5 +93,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BC51AE43-AA8A-4D52-A91C-BF59905F3F04} = {A6EC78BA-6455-41DA-9652-2AB6A179C8A0}
 		{AEE5DD91-A630-4151-BC34-144777F946AB} = {A6EC78BA-6455-41DA-9652-2AB6A179C8A0}
+		{B66E9704-AA15-41BA-8344-1D9FCD9D2577} = {5DF68778-7758-4A00-9AF4-3080323A78EB}
 	EndGlobalSection
 EndGlobal

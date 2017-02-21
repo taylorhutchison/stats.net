@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DataIO\DataIO.csproj" />
+    <ProjectReference Include="..\..\..\StatsNet\StatsNet.csproj" />
+  </ItemGroup>
+
+</Project>
