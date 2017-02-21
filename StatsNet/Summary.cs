@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Stats.Net
+namespace StatsNet
 {
     public static class Summary {
         public static int Sum(IEnumerable<int> vector){

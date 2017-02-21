@@ -1,10 +1,10 @@
 using Xunit;
 using System;
 using System.Linq;
-using Stats.Net.Tests.TestClasses;
-using static Stats.Net.Summary;
+using StatsNet.Tests.TestClasses;
+using static StatsNet.Summary;
 
-namespace Stats.Net.Tests
+namespace StatsNet.Tests
 {
 
     public class SummaryTests

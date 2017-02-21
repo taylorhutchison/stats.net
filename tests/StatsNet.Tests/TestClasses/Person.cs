@@ -1,6 +1,6 @@
 using System;
 
-namespace Stats.Net.Tests.TestClasses
+namespace StatsNet.Tests.TestClasses
 {
     public sealed class Person : IComparable<Person>
     {

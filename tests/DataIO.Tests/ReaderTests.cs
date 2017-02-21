@@ -1,8 +1,8 @@
 using System;
-using DataIO.Net;
+using DataIONet;
 using Xunit;
 
-namespace DataIO.Net.tests
+namespace DataIONet.Tests
 {
     public class ReaderTests
     {
