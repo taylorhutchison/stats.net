@@ -2,28 +2,22 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using DataIO.FormatReaders;
+using DataIO.Formats;
 
 namespace DataIO.Read {
 
     public static class Reader {
-        
-        public static T Read<T>(string resourcePath) where T: FormatReader, new() {
-            if(File.Exists(resourcePath)){
-                T reader = new T();
-                if (reader.CanRead(resourcePath))
-                {
-                    return reader;
-                }
-            }
-            throw new ArgumentException($"{resourcePath} does not exist.");
+        public static T OpenFile<T>(string resourcePath) where T: FormatReader, new() {
+            T reader = new T();
+            return OpenFile(resourcePath, reader);
         }
-        public static T Read<T>(string resourcePath, T reader) where T : FormatReader
+        public static T OpenFile<T>(string resourcePath, T reader) where T : FormatReader
         {
             if (File.Exists(resourcePath))
             {
                 if (reader.CanRead(resourcePath))
                 {
+                    reader.Open(resourcePath);
                     return reader;
                 }
             }
