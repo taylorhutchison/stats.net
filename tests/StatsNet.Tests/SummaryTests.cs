@@ -197,6 +197,14 @@ namespace StatsNet.Tests
             Assert.Equal("Taylor", range.Last().Name);
             Assert.Equal(30, range.Last().Age);
         }
+
+        [Fact]
+        public void StdDev_GivenAnArrayOfDoubles_ReturnsTheStandardDeviation()
+        {
+            double[] vector = new double[] { 9, 2, 5, 4, 12, 7, 8, 11, 9, 3, 7, 4, 12, 5, 4, 10, 9, 6, 9, 4 };
+            var stdDev = StdDev(vector);
+            Assert.Equal(2.983, stdDev, 3);
+        }
     }
 
 }
