@@ -20,6 +20,22 @@ namespace DataIO.Formats
             }
             throw new ArgumentException($"Cannot open file at {resourcePath}");
         }
+
+        protected static Encoding GetEncoding(FileStream file)
+        {
+            var bom = new byte[4];
+            file.Read(bom, 0, 4);
+            if (bom[0] == 0xef && bom[1] == 0xbb && bom[2] == 0xbf)
+            {
+                return Encoding.UTF8;
+            }
+            if (bom[0] == 0xff && bom[1] == 0xfe)
+            {
+                return Encoding.Unicode;
+            }
+            return Encoding.ASCII;
+        }
+
         public virtual void Close()
         {
             Dispose();

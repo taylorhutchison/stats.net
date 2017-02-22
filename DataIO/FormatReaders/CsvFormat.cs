@@ -13,7 +13,7 @@ namespace DataIO.Formats
 
         private StreamReader streamReader;
 
-        public IEnumerable<string> lines;
+        private IEnumerable<string> FileLines;
 
         private IDictionary<int, IEnumerable<string>> Columns = new Dictionary<int, IEnumerable<string>>();
 
@@ -44,7 +44,7 @@ namespace DataIO.Formats
 
         public IEnumerable<string> GetHeader()
         {
-            return lines.First().Split(Delimiter);
+            return FileLines.First().Split(Delimiter);
         }
 
         public IEnumerable<string> GetColumn(int columnNumber)
@@ -90,7 +90,7 @@ namespace DataIO.Formats
                 return Columns[columnNumber];
             }
 
-            var column = lines
+            var column = FileLines
                 .Skip(1)
                 .SelectMany(l =>
                 {
@@ -127,25 +127,10 @@ namespace DataIO.Formats
         protected override FormatReader Read(string resourcePath)
         {
             Stream = new FileStream(resourcePath, FileMode.Open, FileAccess.Read);
-            var encoding = GetEncoding(Stream as FileStream);
+            var encoding = GetEncoding((FileStream)Stream);
             streamReader = new StreamReader(Stream as FileStream, encoding, true, 512);
-            lines = ReadAll();
+            FileLines = ReadAll();
             return this;
-        }
-
-        private static Encoding GetEncoding(FileStream file)
-        {
-            var bom = new byte[4];
-            file.Read(bom, 0, 4);
-            if (bom[0] == 0xef && bom[1] == 0xbb && bom[2] == 0xbf)
-            {
-                return Encoding.UTF8;
-            }
-            if (bom[0] == 0xff && bom[1] == 0xfe)
-            {
-                return Encoding.Unicode;
-            }
-            return Encoding.ASCII;
         }
 
         public override void Close()
