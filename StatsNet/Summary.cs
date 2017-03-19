@@ -66,7 +66,7 @@ namespace StatsNet
             return max == 1 ? null : valueOccurences.Where(v => v.Value == max).Select(v => v.Key);
         }
 
-        public static (T min, T max)  Range<T>(IEnumerable<T> vector) where T: IComparable<T>{
+        public static (T Min, T Max)  Range<T>(IEnumerable<T> vector) where T: IComparable<T>{
             if(vector != null && vector.Any()){
                 var first = vector.First();
                 T min = first;
@@ -82,7 +82,7 @@ namespace StatsNet
                         max = item;
                     }
                 }
-                return (min: min, max: max);
+                return (Min: min, Max: max);
             }
             throw new ArgumentNullException($"Cannot pass a null or empty array to the range method");
         }

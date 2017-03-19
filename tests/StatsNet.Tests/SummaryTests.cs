@@ -155,27 +155,24 @@ namespace StatsNet.Tests
         public void Range_GivenAnArrayOfInts_ReturnsUpperAndLowerBounds(){
             int[] data = new int[] {9, 4, 3, 20, 1};
             var range = Range(data);
-            Assert.Equal(2, range.Count());
-            Assert.Equal(1, range.First());
-            Assert.Equal(20, range.Last());
+            Assert.Equal(1, range.Min);
+            Assert.Equal(20, range.Max);
         }
 
         [Fact]
         public void Range_GivenAnArrayOfStrings_ReturnsUpperAndLowerBounds(){
             string[] data = new string[] {"absolute", "breakfast", "camp"};
             var range = Range(data);
-            Assert.Equal(2, range.Count());
-            Assert.Equal("absolute", range.First());
-            Assert.Equal("camp", range.Last());
+            Assert.Equal("absolute", range.Min);
+            Assert.Equal("camp", range.Max);
         }
 
         [Fact]
         public void Range_GivenAnEmptyArray_ReturnsUpperAndLowerBounds(){
             string[] data = new string[] {};
             var range = Range(data);
-            Assert.Equal(2, range.Count());
-            Assert.Equal(null, range.First());
-            Assert.Equal(null, range.Last());
+            Assert.Equal(null, range.Min);
+            Assert.Equal(null, range.Max);
         }
 
         [Fact]
@@ -193,9 +190,9 @@ namespace StatsNet.Tests
                 new Person(20, "Taylor")
             };
             var range = Range(data);
-            Assert.Equal("Sara", range.First().Name);
-            Assert.Equal("Taylor", range.Last().Name);
-            Assert.Equal(30, range.Last().Age);
+            Assert.Equal("Sara", range.Min.Name);
+            Assert.Equal("Taylor", range.Max.Name);
+            Assert.Equal(30, range.Max.Age);
         }
 
         [Fact]
